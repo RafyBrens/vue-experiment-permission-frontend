@@ -1,17 +1,16 @@
 <template>
   <div class="home">
-    <test/>
+    <Permission/>
   </div>
 </template>
 
 <script>
-import test from "@/views/Permission/Permission.vue";
-
+import Permission from "@/views/Permission/Permission.vue";
 
 export default {
   name: "Home",
-  components: {    
-    test
+  components: { 
+    Permission
   }
 };
 </script>
