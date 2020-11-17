@@ -12,6 +12,11 @@ const routes: Array<RouteConfig> = [
     component: Home
   },
   {
+    path: "/edit/:id",
+    name: "Home",
+    component: Home
+  },
+  {
     path: "/list",
     name: "List",
     component: PermissionList

@@ -5,17 +5,17 @@
     </el-header>
     <el-main>
       <el-row type="flex" justify="center">
-        <el-col :span="13">
+        <el-col :span="18">
           <el-table
-            :data="tableData"
+            :data="permissionsData"
             style="width: 100%">
             <el-table-column
-              prop="name"
+              prop="employee.name"
               label="Nombre"
               width="180">
             </el-table-column>
             <el-table-column
-              prop="lastName"
+              prop="employee.lastName"
               label="Apellido"
               width="180">
             </el-table-column>
@@ -28,7 +28,17 @@
               prop="date"
               label="Fecha"
               width="180">
-            </el-table-column>          
+            </el-table-column>
+            <el-table-column width="120">
+              <template slot-scope="scope">
+                <el-button @click="edit(scope.$index, permissionsData)">Editar</el-button>
+              </template>
+            </el-table-column>
+            <el-table-column width="120">
+              <template slot-scope="scope">
+                <el-button @click="remove(scope.$index, permissionsData)">Eliminar</el-button>
+              </template>
+            </el-table-column>
           </el-table>
         </el-col>
       </el-row>

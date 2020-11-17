@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {permission:new Permission()},
-  mutations: {},
+  mutations: {}, 
   actions: {},
   modules: {}
 });

@@ -22,6 +22,7 @@ export default class Permission extends Vue {
     super();
     this.permission = {} as PermissionEmployee;
     this.permission.employee = {} as Employee;
+    console.log('=======>', this.$route.params.id);
   }
 
   save() {
