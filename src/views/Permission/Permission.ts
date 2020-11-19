@@ -4,6 +4,7 @@ import { Employee } from '@/models/Employee';
 
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 import { required } from 'vee-validate/dist/rules';
+import PermissionApi from '@/core/api/PermissionApi';
 
 extend('required', {
   ...required,
@@ -17,16 +18,25 @@ export default class Permission extends Vue {
 
   private permission: PermissionEmployee;
   private errorMessage = "";
+  private isEditing = false;
 
   constructor() {
     super();
     this.permission = {} as PermissionEmployee;
     this.permission.employee = {} as Employee;
-    console.log('=======>', this.$route.params.id);
+  }
+
+  async mounted() {
+    const id = this.$route.params.id;
+    if (id) {
+      this.isEditing=true;
+      this.permission = await PermissionApi.getPermissionDetail(Number(id));
+    }
   }
 
   save() {
-    console.log(this.permission);
+    if (!this.isEditing) PermissionApi.savePermission(this.permission);
+    if (this.isEditing) PermissionApi.editPermissions(this.permission);
   }
 
   pickerOptions = {
@@ -34,6 +44,5 @@ export default class Permission extends Vue {
       return date > new Date();
     }
   }
-
 
 }
